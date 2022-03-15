@@ -1,0 +1,36 @@
+server:
+  port: 8888
+  
+#Configuracion cloud
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/lascencion23/admin-config-data.git
+          default-label: main
+          clone-on-start: true
+          force-pull: true
+      discovery:
+        enabled: false
+
+
+# EUREKA
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://registry-service:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+ 
+# LOCALMENTE
+#  cloud:
+#    config:
+#        server:
+#          native:
+#            search-locations: file:///C:\Ambiente-desarrollo\docker\admin-config-data
+#  profiles:
+#    active: native
